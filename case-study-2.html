@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study - Project Name</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Bodi Mao</a>
+            <ul>
+                <li><a href="index.html">Work</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="case-study-page">
+        <article class="case-study-content">
+            <header class="case-study-header">
+                <h1>InquirHere</h1>
+                <p class="project-description">Brief project description</p>
+            </header>
+
+            <!-- Long-form case study content -->
+            <div class="case-study-details">
+                <img src="images/InquirHere.png" alt="Full case study" class="full-width-image">
+                
+                <!-- Figma Embed -->
+                <div class="figma-embed">
+                    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/eYKl2caRRB854NuGO2wf5d/InquirHere-(Local)?node-id=1331-12491&p=f&scaling=scale-down&content-scaling=fixed&page-id=146%3A3774&starting-point-node-id=1331%3A12491&show-proto-sidebar=1&embed-host=share" allowfullscreen></iframe>
+                </div>
+
+                <img src="images/InquirHereThanks.png" alt="Thank you page" class="full-width-image">
+            </div>
+
+            <!-- Other Case Studies Navigation -->
+            <section class="other-works">
+                <h2>Other Works</h2>
+                <div id="works-navigation" class="works-navigation">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <script>
+        // Case studies data
+        const caseStudies = [
+            {
+                id: 'yourowden',
+                title: 'YouRowden',
+                type: 'Library App UX Research',
+                link: 'case-study-1.html',
+                image: 'images/YouRowdenT.png'
+            },
+            {
+                id: 'inquirhere',
+                title: 'InquirHere',
+                type: 'UX/UI Design',
+                link: 'case-study-2.html',
+                image: 'images/InquirHereT.png'
+            }
+            // Add more case studies as needed
+        ];
+
+        // Get current page URL
+        const currentPage = window.location.pathname;
+
+        // Filter out current case study
+        const availableStudies = caseStudies.filter(study => !currentPage.includes(study.link));
+        
+        // Get 2 random studies
+        const shuffled = availableStudies.sort(() => 0.5 - Math.random());
+        const selectedStudies = shuffled.slice(0, 2);
+
+        // Populate navigation
+        const navigationContainer = document.getElementById('works-navigation');
+        selectedStudies.forEach(study => {
+            navigationContainer.innerHTML += `
+                <a href="${study.link}" class="work-link">
+                    <img src="${study.image}" alt="${study.title}" class="work-thumbnail">
+                    <div class="work-info">
+                        <span class="project-title">${study.title}</span>
+                        <span class="project-type">${study.type}</span>
+                    </div>
+                </a>
+            `;
+        });
+    </script>
+
+    <footer>
+        <p>&copy; 2024 Bodi Mao. All rights reserved.</p>
+    </footer>
+</body>
+</html> 
